@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "Roll20 Exporter",
+    "version": "1.0.0",
+    "description": "Exporta fichas y handouts de una partida de Roll20, limpia el texto y descarga el resultado o lo copia al portapapeles.",
+    "permissions": [
+        "downloads",
+        "storage",
+        "clipboardWrite"
+    ],
+    "host_permissions": [
+        "https://app.roll20.net/*",
+        "https://*.roll20.net/*"
+    ],
+    "background": {
+        "service_worker": "src/background.js"
+    },
+    "action": {
+        "default_title": "Roll20 Exporter",
+        "default_popup": "src/popup/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://app.roll20.net/*"
+            ],
+            "js": [
+                "src/page/exporter.page.js"
+            ],
+            "world": "MAIN",
+            "run_at": "document_start",
+            "all_frames": false
+        },
+        {
+            "matches": [
+                "https://app.roll20.net/*"
+            ],
+            "js": [
+                "src/content/bridge.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": false
+        }
+    ]
+}

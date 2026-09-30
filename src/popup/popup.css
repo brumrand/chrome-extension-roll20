@@ -1,0 +1,251 @@
+:root {
+    color-scheme: dark;
+    --fondo: #16181d;
+    --panel: #1f232b;
+    --panel-alto: #272c36;
+    --borde: #333a46;
+    --texto: #e7eaf0;
+    --tenue: #98a1b3;
+    --acento: #f2a33c;
+    --acento-texto: #1b1204;
+    --ok: #4bbf73;
+    --error: #ef6461;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 420px;
+    max-height: 600px;
+    margin: 0;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--fondo);
+    color: var(--texto);
+    font: 13px/1.45 system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+h1 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+.cabecera {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.resumen {
+    margin: 0;
+    color: var(--tenue);
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.chip {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--panel-alto);
+    color: var(--tenue);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.chip--listo {
+    background: rgba(75, 191, 115, 0.16);
+    color: var(--ok);
+}
+
+.chip--error {
+    background: rgba(239, 100, 97, 0.16);
+    color: var(--error);
+}
+
+.chip--vacio {
+    background: var(--panel-alto);
+    color: var(--tenue);
+}
+
+.acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.boton {
+    padding: 7px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--panel-alto);
+    color: var(--texto);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.boton:hover:not(:disabled) {
+    border-color: #4a5464;
+    background: #2f3542;
+}
+
+.boton:disabled {
+    opacity: 0.55;
+    cursor: progress;
+}
+
+.boton--primario {
+    border-color: var(--acento);
+    background: var(--acento);
+    color: var(--acento-texto);
+    font-weight: 600;
+}
+
+.boton--fantasma {
+    background: transparent;
+    color: var(--tenue);
+}
+
+.panel-pegar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #12141a;
+    color: var(--texto);
+    font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    resize: vertical;
+}
+
+.aviso {
+    margin: 0;
+    padding: 7px 9px;
+    border-radius: 7px;
+    background: rgba(239, 100, 97, 0.12);
+    border: 1px solid rgba(239, 100, 97, 0.35);
+    color: #ffc9c8;
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 6px;
+    align-items: center;
+}
+
+input[type="search"],
+select {
+    padding: 6px 8px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #12141a;
+    color: var(--texto);
+    font: inherit;
+    font-size: 12px;
+    min-width: 0;
+}
+
+.marcar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--tenue);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    max-height: 260px;
+    padding-right: 2px;
+}
+
+.vacio {
+    padding: 14px 8px;
+    color: var(--tenue);
+    text-align: center;
+    font-size: 12px;
+}
+
+.item {
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--panel);
+    overflow: hidden;
+}
+
+.item__cabeza {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.item__titulo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item__meta {
+    color: var(--tenue);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.item__cuerpo {
+    margin: 0;
+    padding: 0 8px 8px 30px;
+    color: var(--tenue);
+    font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.pie {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--borde);
+}
+
+.pie__fila {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 6px;
+}
+
+.pie__info {
+    margin: 0;
+    color: var(--tenue);
+    font-size: 11px;
+    text-align: right;
+}

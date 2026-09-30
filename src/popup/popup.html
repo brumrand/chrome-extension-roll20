@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Roll20 Exporter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header class="cabecera">
+        <div class="titulo">
+            <h1>Roll20 Exporter</h1>
+            <span id="estado" class="chip chip--vacio">Sin datos</span>
+        </div>
+        <p id="resumen" class="resumen">Abre tu partida de Roll20 y pulsa «Exportar partida».</p>
+    </header>
+
+    <section class="acciones">
+        <button id="btn-exportar" type="button" class="boton boton--primario">Exportar partida</button>
+        <button id="btn-archivo" type="button" class="boton">Cargar archivo…</button>
+        <input id="input-archivo" type="file" accept="application/json,.json" hidden>
+        <button id="btn-pegar" type="button" class="boton">Pegar JSON</button>
+        <button id="btn-limpiar" type="button" class="boton boton--fantasma">Vaciar</button>
+    </section>
+
+    <section id="panel-pegar" class="panel-pegar" hidden>
+        <textarea id="area-pegar" rows="4" spellcheck="false" placeholder="Pega aquí el array JSON que exportó Roll20…"></textarea>
+        <button id="btn-procesar-pegado" type="button" class="boton boton--primario">Procesar pegado</button>
+    </section>
+
+    <p id="aviso" class="aviso" hidden></p>
+
+    <section class="filtros" id="filtros" hidden>
+        <input id="buscador" type="search" placeholder="Buscar por título…" spellcheck="false">
+        <select id="filtro-tipo">
+            <option value="todos">Todos los tipos</option>
+            <option value="character">Fichas</option>
+            <option value="handout">Handouts</option>
+        </select>
+        <label class="marcar">
+            <input id="marcar-todo" type="checkbox" checked>
+            <span id="texto-marcar">Todo</span>
+        </label>
+    </section>
+
+    <section id="lista" class="lista"></section>
+
+    <footer class="pie" id="pie" hidden>
+        <div class="pie__fila">
+            <select id="formato">
+                <option value="cards">JSON { cards: [...] }</option>
+                <option value="array">JSON array crudo</option>
+            </select>
+            <button id="btn-descargar" type="button" class="boton boton--primario">Descargar</button>
+            <button id="btn-copiar" type="button" class="boton">Copiar</button>
+        </div>
+        <p id="pie-info" class="pie__info"></p>
+    </footer>
+
+    <script src="../lib/cleaner.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
